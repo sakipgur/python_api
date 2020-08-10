@@ -22,9 +22,9 @@
 
 **Testing Application**
 
-- Open URL http://127.0.0.1:8080/ from browser and see `Hello!` message.
+- Open URL http://localhost:8080/ from browser and see `Hello!` message.
 
-- Send a `GET` request to URL http://127.0.0.1:8080/healthz and see the return code and result.
+- Send a `GET` request to URL http://localhost:8080/healthz and see the return code and result.
 Return code should be `200` and output should be similar to below json output.
 
 ```json
