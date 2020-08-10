@@ -1,0 +1,9 @@
+version: '3.4'
+
+services: 
+    walmart:
+        build: .
+        volumes: 
+            - .:/data
+        ports:
+            - 8080:80
