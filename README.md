@@ -6,26 +6,27 @@
 
 - Download the code from GitHub.
 
-`git clone git@github.com:sakipgur/python_api.git`
+`$ git clone git@github.com:sakipgur/python_api.git`
 
 - Change directory to the new directory
 
-`cd python_api`
+`$ cd python_api`
 
 - Build `docker-compose` environment
 
-`docker-compose build`
+`$ docker-compose build`
 
 - Run the environmet in detached mode
 
-`docker-compose up -d`
+`$ docker-compose up -d`
 
 **Testing Application**
 
 - Open URL http://127.0.0.1:8080/ from browser and see `Hello!` message.
 
 - Send a `GET` request to URL http://127.0.0.1:8080/healthz and see the return code and result.
-From shell you should see something like below in json format:
+Return code should be `200` and output should be similar to below json output.
+
 ```json
 {
     "status": "OK",
