@@ -32,7 +32,6 @@ class healthz(Resource):
         output = stream.read()
         uptime_out = "up since " + output.strip() + " UTC"
 
-#        return {'message': 'Success', 'data': healthz}, 200
         return {'status': 'OK', 'version': '0.0.1', 'uptime': uptime_out}, 200
 
 api.add_resource(healthz, '/healthz')
