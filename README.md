@@ -2,96 +2,34 @@
 
 ## Usage
 
-All responses will have the form
+**Starting Application**
 
+- Download the code from GitHub.
+
+`git clone git@github.com:sakipgur/python_api.git`
+
+- Change directory to the new directory
+
+`cd python_api`
+
+- Build `docker-compose` environment
+
+`docker-compose build`
+
+- Run the environmet in detached mode
+
+`docker-compose up -d`
+
+**Testing Application**
+
+- Open URL http://127.0.0.1:8080/ from browser and see `Hello!` message.
+
+- Send a `GET` request to URL http://127.0.0.1:8080/healthz and see the return code and result.
+From shell you should see something like below in json format:
 ```json
 {
-    "data": "Mixed type holding the content of the response",
-    "message": "Description of what happened"
+    "status": "OK",
+    "version": "0.0.1",
+    "uptime": "up since 2020-08-10 06:30:33 UTC"
 }
 ```
-
-Subsequent response definitions will only detail the expected value of the `data field`
-
-### List all devices
-
-**Definition**
-
-`GET /devices`
-
-**Response**
-
-- `200 OK` on success
-
- ```json
- [
-     {
-         "identifier": "floor-lamp",
-         "name": "Floor Lamp",
-         "device_type": "switch",
-         "controller_gateway": "192.168.0.2"
-     },
-     {
-         "identifier": "samsung-tv",
-         "name": "Living Room TV",
-         "device_type": "tv",
-         "controller_gateway": "192.168.0.9"
-     }
- ]
- ```
-
-### Registering a new device
-
-**Definition**
-
-`POST /devices`
-
-**Arguments**
-
-- `"identifier": string` a globally unique identifier for this device
-- `"name": string` a friendly name for this device
-- `"device_type": string` the type of the device as understood by the client
-- `"controller_gateway": string` the IP address of the device's controller
-
-If a device with the given identifier already exists, the existing device will be overwritten.
-
-**Response**
-
-- `201 Created` on success
-```json
-{
-    "identifier": "floor-lamp",
-    "name": "Floor Lamp",
-    "device_type": "switch",
-    "controller_gateway": "192.168.0.2"
-}
-```
-
-## Lookup device details
-
-`GET /devices/<identifier>`
-
-**Response**
-
-- `404 Not Found` if the device does not exist
-- `200 OK` on success
-
-```json
-{
-    "identifier": "floor-lamp",
-    "name": "Floor Lamp",
-    "device_type": "switch",
-    "controller_gateway": "192.168.0.2"
-}
-```
-
-## Delete a device
-
-**Definition**
-
-`DELETE /devices/<identifier>`
-
-**Response**
-
-- `404 Not Found` if the device does not exist
-- `204 No Content` on success
